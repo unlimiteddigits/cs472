@@ -1,0 +1,77 @@
+Script started on 2019-02-14 12:06:54-0500
+]0;mark@lm19-1: ~/Documents/Project2[01;32mmark@lm19-1[00m:[01;34m~/Documents/Project2[00m$ make
+rm -f fib_shm_parent fib_shm_child
+gcc -Wall -g -std=c99 -Werror  fib_shm_parent.c -o fib_shm_parent
+gcc -Wall -g -std=c99 -Werror  fib_shm_child.c -o fib_shm_child
+]0;mark@lm19-1: ~/Documents/Project2[01;32mmark@lm19-1[00m:[01;34m~/Documents/Project2[00m$ ./fib_shm_parent 0
+Parent here. 
+	My PID 2351.
+Please provide only one positive number.
+]0;mark@lm19-1: ~/Documents/Project2[01;32mmark@lm19-1[00m:[01;34m~/Documents/Project2[00m$ ./fib_shm_parent 0 1
+Parent here. 
+	My PID 2352.
+Please provide only one positive number.
+]0;mark@lm19-1: ~/Documents/Project2[01;32mmark@lm19-1[00m:[01;34m~/Documents/Project2[00m$ ./fib_shm_parent 0 1[1P1[1P1
+Parent here. 
+	My PID 2353.
+Fork Returned: 2354
+Fork Returned: 0
+	Child here.  	My PID 2354.
+
+	Preparing 1 of the Fibonacci Numbers.
+
+	Done updating shared memory in child process.
+
+Fibonacci sequence = 0
+Parent End
+
+]0;mark@lm19-1: ~/Documents/Project2[01;32mmark@lm19-1[00m:[01;34m~/Documents/Project2[00m$ ./fib_shm_parent 10
+Parent here. 
+	My PID 2355.
+Fork Returned: 2356
+Fork Returned: 0
+	Child here.  	My PID 2356.
+
+	Preparing 10 of the Fibonacci Numbers.
+
+	Done updating shared memory in child process.
+
+Fibonacci sequence = 0, 1, 1, 2, 3, 5, 8, 13, 21, 34
+Parent End
+
+]0;mark@lm19-1: ~/Documents/Project2[01;32mmark@lm19-1[00m:[01;34m~/Documents/Project2[00m$ ./fib_shm_parent 10[K5
+Parent here. 
+	My PID 2357.
+Fork Returned: 2358
+Fork Returned: 0
+	Child here.  	My PID 2358.
+
+	Preparing 15 of the Fibonacci Numbers.
+
+	Done updating shared memory in child process.
+
+Fibonacci sequence = 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377
+Parent End
+
+]0;mark@lm19-1: ~/Documents/Project2[01;32mmark@lm19-1[00m:[01;34m~/Documents/Project2[00m$ ./fib_shm_parent 150[K[K8
+Parent here. 
+	My PID 2359.
+Fork Returned: 2360
+Fork Returned: 0
+	Child here.  	My PID 2360.
+
+	Preparing 8 of the Fibonacci Numbers.
+
+	Done updating shared memory in child process.
+
+Fibonacci sequence = 0, 1, 1, 2, 3, 5, 8, 13
+Parent End
+
+]0;mark@lm19-1: ~/Documents/Project2[01;32mmark@lm19-1[00m:[01;34m~/Documents/Project2[00m$ ./fib_shm_parent 8[K-1
+Parent here. 
+	My PID 2361.
+Please provide only one positive number.
+]0;mark@lm19-1: ~/Documents/Project2[01;32mmark@lm19-1[00m:[01;34m~/Documents/Project2[00m$ exit
+exit
+
+Script done on 2019-02-14 12:08:35-0500
