@@ -2,7 +2,7 @@
 #fib_shm_parent: fib_shm_parent.c fib_shm_child.c
 #	g++ -o fib_shm_parent fib_shm_parent.c fib_shm_child.c -I.
 
-TARGETS = q5
+TARGETS = q5 test
 CC_CPP = $(CROSS_TOOL)g++
 CC_C = $(CROSS_TOOL)gcc
 
@@ -13,6 +13,9 @@ all: clean $(TARGETS)
 $(TARGETS):
 	$(CC_C) $(CFLAGS) $@.c -o $@
 	
+test: q5
+	./q5
+
 clean:
 	rm -f $(TARGETS)
 	
