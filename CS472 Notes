@@ -2,3 +2,9 @@ sudo apt-get install libncurses5-dev gcc make git exuberant-ctags bc libssl-dev
 
 git clone https://github.com/torvalds/linux.git
 
+Run eclipse
+/home/mark/cpp/eclipse/eclipse &
+
+for java
+/home/mark/eclipse/eclipse &
+
