@@ -2,7 +2,7 @@
 #fib_shm_parent: fib_shm_parent.c fib_shm_child.c
 #	g++ -o fib_shm_parent fib_shm_parent.c fib_shm_child.c -I.
 
-TARGETS = Q2
+TARGETS = q5
 CC_CPP = $(CROSS_TOOL)g++
 CC_C = $(CROSS_TOOL)gcc
 
