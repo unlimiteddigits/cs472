@@ -6,9 +6,12 @@
 
 int main()
 {
-pid_t pid, pid1;
+pid_t pid, pid1, pid2, pid3;
 /* fork a child process */
 pid = fork();
+pid2= getpid();
+pid3= getpid();
+printf("pid2=%d\tpid3=%d\n",pid2,pid3);
 
 if (pid < 0) { /* error occurred */
       fprintf(stderr, "Fork Failed");
