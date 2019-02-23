@@ -1,0 +1,8 @@
+https://forums.linuxmint.com/viewtopic.php?t=126571
+
+
+Some tips to keep your SSD alive a lot longer...
+
+Turn off ext4 journalling
+When installing Mint, before running the installer, open a terminal and turn off journalling, and set the fs to be checked at regular intervals:
+
