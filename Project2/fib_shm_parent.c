@@ -12,6 +12,7 @@ CS472 Project 2 Linux Shared Memory
 #include <sys/ipc.h>
 #include <sys/shm.h>
 
+
 #define SHSIZE 500
 
 int main(int argc, char *argv[])
@@ -24,6 +25,7 @@ int main(int argc, char *argv[])
 	key_t key;
 	char *shm;
 	char *s;
+	char singledigit[10];
 
 	if (argc != 2 || atoi(argv[1])<= 0)
 	{
