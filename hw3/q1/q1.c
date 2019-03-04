@@ -11,7 +11,7 @@
 int compare_and_swap(int *value, int expected, int new_value);
 int test_and_set(int *target) ;
 
-int size=10;
+int size=100;
 int pid, pid1;
 int waiting[100];
 int n,i,j;
@@ -20,6 +20,7 @@ int key=0;
 	int shmid;
 	key_t skey;
 	char *shm;
+	char *s;
 char singledigit[10];
 
 
@@ -35,6 +36,8 @@ int main(int argc, char *argv[])
 	}
 	
 	shm=shmat(shmid, NULL,0);
+	*shm='1';
+	printf("after null%s\n",shm);
 	
 	//perror("test perror");
 
@@ -44,14 +47,7 @@ int main(int argc, char *argv[])
 		exit(1);
 	}
 	
- 
-	char snum[50];
-	sprintf(snum,"%i",1);
-	
-	memcpy(shm, snum, strlen(snum));
-	
-	printf("%d",*shm);
-	printf("%d",*snum);
+	printf("%s\n",shm);
 	sleep(4);
 
 
@@ -61,20 +57,17 @@ int main(int argc, char *argv[])
 	  return 1;
 	}
 	else if (pid == 0) { /* child process */
-		shmid = shmget(skey, size,  0666);
+		//shmid = shmget(skey, size,  0666);
+		//shm=shmat(shmid, NULL,0);
 		pid1 = getpid();
 		printf("child: pid = %d\n",pid); /* C */
 		printf("child: pid1 = %d\n",pid1); /* D */
-		sleep(4);
+		sleep(2);
 		printf("proceed after 1st sleep.\n");
-		sprintf(singledigit,", %s", "0");
-		strcat (snum, singledigit);			
-		memcpy(shm, snum, strlen(snum));
-		
-		lock = 0;
-		sleep(4);
-		printf("proceed after 2nd sleep.%d\n", *shm);
-		lock = 0;
+		*shm = '0';
+		sleep(2);
+		printf("proceed after 2nd sleep.%s\n", shm);
+		*shm = '0';
 		exit(1);
 	}
 	else { /* parent process */
@@ -88,6 +81,11 @@ int main(int argc, char *argv[])
 	lock=1;
 	do {
 		while (test_and_set(&lock)!=0)
+		{
+			if (*shm == '0') {
+				lock=0;
+			}
+		}
 		; /* do nothing */
 		printf("in first do.  %i\n",i);
 		/* critical section */
@@ -98,8 +96,14 @@ int main(int argc, char *argv[])
 	
 	i=0;
 	lock=1;
+	*shm='1';
 	do {
 		while (compare_and_swap(&lock, 0, 1) != 0)
+		{
+			if (*shm == '0') {
+				lock=0;
+			}
+		}
 		; /* do nothing */
 		printf("in second do.  %i\n",i);
 		/* critical section */
@@ -125,19 +129,22 @@ int main(int argc, char *argv[])
 		/ * remainder section * /
 	} while (1);
 */
+ if ( shmctl( shmid, IPC_RMID, NULL ) == -1 )
+         perror("failed to destroy");
+
 }
 
 int compare_and_swap(int *value, int expected, int new_value) {
 	int temp = *value;
 	if (*value == expected)
 		*value = new_value;
-	//printf("in compare and swap. %i\n",temp);
+	printf("in compare and swap. %s\n",shm);
 	return temp;
 }
 
 int test_and_set(int *target) {
 	int rv = *target;
 	*target = 1;
-	printf("in test and set. %i\n",*shm);
+	printf("in test and set. %s\n",shm);
 	return rv;
 }

@@ -12,7 +12,7 @@ ipcs -m
 
 Clear memory
 ipcrm -M 9876
-  note: 98976 will look like 0x00002694
+  note: 9876 will look like 0x00002694
  
 
 */
