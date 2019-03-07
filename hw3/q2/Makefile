@@ -6,7 +6,8 @@ TARGETS = q2 test
 CC_CPP = $(CROSS_TOOL)g++
 CC_C = $(CROSS_TOOL)gcc
 
-CFLAGS = -Wall -g -std=c99 -Werror -pthread -D_SVID_SOURCE 
+CFLAGS = -Wall -g -std=c99 -Werror -pthread 
+# add this flag for unix -D_SVID_SOURCE 
 
 all: clean $(TARGETS)
 
