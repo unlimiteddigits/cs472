@@ -8,3 +8,8 @@ Run eclipse
 for java
 /home/mark/eclipse/eclipse &
 
+
+Notepad++
+sudo snap install notepad-plus-plus
+
+
