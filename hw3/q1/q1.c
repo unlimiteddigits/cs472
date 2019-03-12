@@ -123,6 +123,7 @@ int main(int argc, char *argv[])
 		/ * remainder section * /
 	} while (1);
 *//*
+Bounded-waiting mutual exclusion with test and set().
 	do {
 		waiting[i] = 1;
 		key = 1;
